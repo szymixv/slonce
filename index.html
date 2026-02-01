@@ -135,7 +135,6 @@
   <!-- Spotify (Twój utwór) -->
   <footer>
     <div class="spotify-embed" id="spotify-embed">
-      <!-- Wstaw poprawny TRACK_ID lub zostaw ten z przykładu -->
       <iframe
         class="spotify-iframe"
         src="https://open.spotify.com/embed/track/6ICEKfLzHvCRFx1eIoITve?utm_source=generator"
@@ -149,11 +148,15 @@
     </p>
     <div class="spotify-fallback" id="spotify-fallback">
       <p>Odtwarzacz jest zablokowany. Otwórz utwór bezpośrednio:</p>
-      <p><a href="https://open.spotify.com/track/6ICEKfLzHvCRFx1eIoITve?si=6914dddec1b842ce" target="_blank" rel="noopener">▶ Otwórz w Spotify</a></p>
+      <p>
+        <a href="https://open.spotify.com/track/6ICEKfLzHvCRFx1eIoITve?si=6914dddec1b842ce" target="_blank" rel="noopener">
+          ▶ Otwórz w Spotify
+        </a>
+      </p>
     </div>
 
     <script>
-      // Diagnostyka obrazków – logi do konsoli
+      // Diagnostyka obrazków – jeśli któryś się nie załaduje, pokaż błąd w konsoli
       function bindImgLog(id){
         const el = document.getElementById(id);
         if(!el) return;
@@ -163,7 +166,7 @@
       bindImgLog('img1');
       bindImgLog('img2');
 
-      // Fallback dla Spotify – jeżeli iframe jest zablokowany
+      // Fallback dla Spotify – jeśli iframe „zniknie”, pokaż link po 3s.
       window.addEventListener('load', () => {
         const iframe = document.querySelector('.spotify-iframe');
         const fallback = document.getElementById('spotify-fallback');
