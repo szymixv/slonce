@@ -30,6 +30,7 @@
     }
     .subtitle{ margin-top:10px; font-size: clamp(14px, 2.4vw, 18px); opacity:.85; }
 
+    /* serduszka w tle */
     .hearts{ position: fixed; inset: 0; pointer-events:none; overflow:hidden; }
     .heart{
       position:absolute; width:18px; height:18px; background: var(--accent); transform: rotate(45deg);
@@ -49,9 +50,9 @@
     .card{
       width: min(920px, 92vw);
       background: rgba(255,255,255,.55);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,.7); border-radius: 18px;
-      box-shadow: 0 18px 44px rgba(0,0,0,.18);
+      box-shadow: 0 18px 44px var(--shadow);
       padding: clamp(18px, 3vw, 28px);
       opacity:0; transform: translateY(14px) scale(.995);
       animation: riseIn 700ms cubic-bezier(.2,.8,.2,1) 180ms forwards;
@@ -66,8 +67,7 @@
       gap: clamp(10px, 2vw, 16px);
     }
     .photo{ position:relative; border-radius: 14px; overflow:hidden; aspect-ratio: 4/3;
-      box-shadow: 0 12px 26px rgba(0,0,0,.18);
-      transform: translateZ(0); background:#fff; }
+      box-shadow: 0 12px 26px var(--shadow); transform: translateZ(0); background:#fff; }
     .photo img{
       width:100%; height:100%; object-fit: cover; display:block;
       transition: transform 400ms ease, filter 400ms ease;
@@ -77,6 +77,7 @@
     .photo::after{ content:"❤"; position:absolute; right:10px; bottom:8px; font-size: 18px; line-height:1; opacity:.9; text-shadow: 0 2px 8px rgba(0,0,0,.25); color: #fff; }
     .photo:hover img{ transform: scale(1.03); filter: saturate(1.15) contrast(1.06); }
 
+    /* Spotify */
     footer{ padding: 20px 16px 28px; }
     .spotify-embed{ max-width: 920px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 28px rgba(0,0,0,.18); background: #121212; min-height: 160px; }
     .spotify-iframe{ display:block; width:100%; height:160px; border:0; border-radius:12px; }
@@ -94,6 +95,7 @@
   </style>
 </head>
 <body>
+  <!-- serduszka w tle -->
   <div class="hearts" aria-hidden="true">
     <div class="heart h1"></div><div class="heart h2"></div><div class="heart h3"></div>
     <div class="heart h4"></div><div class="heart h5"></div>
@@ -124,13 +126,13 @@
           <img id="img1" src="/97442e25-0e13-42fe-8f8c-c2628f468d4a.jpg" alt="Nasze wspomnienie 1" loading="lazy" />
         </figure>
         <figure class="photo">
-          <!-- PODMIEŃ na prawdziwą nazwę drugiego zdjęcia -->
-          <img id="img2" src="/TU-WSTAW-DRUGI-PLIK.jpg" alt="Nasze wspomnienie 2" loading="lazy" />
+          <img id="img2" src="/bad53546-3012-4f5a-94a9-be483eeebc1b.jpg" alt="Nasze wspomnienie 2" loading="lazy" />
         </figure>
       </div>
     </section>
   </main>
 
+  <!-- Spotify (Twój utwór) -->
   <footer>
     <div class="spotify-embed" id="spotify-embed">
       <iframe
@@ -150,16 +152,17 @@
     </div>
 
     <script>
-      // Logi obrazków — zobaczysz w Console (F12)
+      // Logi ładownia obrazków — zobaczysz w Console (F12)
       function bindImgLog(id){
         const el = document.getElementById(id);
         if(!el) return;
         el.addEventListener('load', () => console.log('[IMG OK]', id, el.currentSrc));
         el.addEventListener('error', () => console.error('[IMG ERROR]', id, 'Nie można wczytać:', el.getAttribute('src'), '— sprawdź nazwę/rozszerzenie w /public/'));
       }
-      bindImgLog('img1'); bindImgLog('img2');
+      bindImgLog('img1');
+      bindImgLog('img2');
 
-      // Pokaż fallback link jeżeli iframe jest zablokowany (np. w przeglądarce IG)
+      // Fallback dla Spotify – jeśli iframe jest zablokowany (np. przeglądarka w IG)
       window.addEventListener('load', () => {
         const iframe = document.querySelector('.spotify-iframe');
         const fallback = document.getElementById('spotify-fallback');
