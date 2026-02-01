@@ -1,127 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Przepraszam…</title>
-  <style>
-    :root{
-      --rose-1: #ffd6e0; --rose-2: #ffb3c7; --rose-3: #ff8fab;
-      --ink: #5a2a3a; --accent: #ff4d6d; --accent-2:#ff6b8f; --shadow: rgba(0,0,0,.18);
-    }
-    *{ box-sizing:border-box; }
-    html, body { height: 100%; }
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(255,255,255,.55), transparent 60%),
-        radial-gradient(1000px 700px at 100% 10%, rgba(255,255,255,.35), transparent 60%),
-        linear-gradient(160deg, var(--rose-1), var(--rose-2) 35%, var(--rose-3) 100%);
-      opacity: 0; animation: fadeInBody 700ms ease-out forwards;
-    }
-    header{ text-align:center; padding: 28px 16px 14px; color:#4a1f2f; }
-    .title{
-      display:inline-block; font-weight: 900; letter-spacing:.4px; font-size: clamp(28px, 5vw, 44px);
-      background: linear-gradient(90deg, #8a2944, #bf3253, #ff6b8f);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      opacity:0; transform: translateY(-8px); animation: dropInHeader 620ms cubic-bezier(.2,.9,.25,1) 120ms forwards;
-    }
-    .subtitle{ margin-top:10px; font-size: clamp(14px, 2.4vw, 18px); opacity:.85; }
-
-    .hearts{ position: fixed; inset: 0; pointer-events:none; overflow:hidden; }
-    .heart{
-      position:absolute; width:18px; height:18px; background: var(--accent); transform: rotate(45deg);
-      opacity:.28; filter: blur(.2px); animation: floatUp linear infinite;
-    }
-    .heart::before, .heart::after{ content:""; position:absolute; width:18px; height:18px; background: var(--accent); border-radius:50%; }
-    .heart::before{ left:-9px; } .heart::after{ top:-9px; }
-    .h1{ left:8%;  bottom:-8vh;  animation-duration:14s; }
-    .h2{ left:22%; bottom:-10vh; animation-duration:18s; animation-delay:1s; }
-    .h3{ left:41%; bottom:-12vh; animation-duration:16s; animation-delay:2.3s; }
-    .h4{ left:63%; bottom:-9vh;  animation-duration:20s; animation-delay:.6s; }
-    .h5{ left:78%; bottom:-11vh; animation-duration:17s; animation-delay:1.6s; }
-    @keyframes floatUp{ from { transform: translateY(0) rotate(45deg); opacity:.18; } 60%{opacity:.33;} to { transform: translateY(-120vh) rotate(45deg); opacity:.1; } }
-
-    main{ display:grid; place-items:center; padding: 28px 16px 64px; }
-
-    .card{
-      width: min(920px, 92vw);
-      background: rgba(255,255,255,.55);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,.7); border-radius: 18px;
-      box-shadow: 0 18px 44px var(--shadow);
-      padding: clamp(18px, 3vw, 28px);
-      opacity:0; transform: translateY(14px) scale(.995);
-      animation: riseIn 700ms cubic-bezier(.2,.8,.2,1) 180ms forwards;
-    }
-    .apology{ text-align:center; margin-bottom: 18px; }
-    .apology p{ margin: 8px auto 0; max-width: 70ch; font-size: clamp(16px, 2.4vw, 19px); line-height: 1.7; }
-    .apology .accent{ color: var(--accent-2); font-weight: 800; }
-    .signature{ margin: 14px 0 4px; text-align: center; font-weight: 800; color:#7d2a3f; }
-
-    .gallery{
-      margin-top: 12px; display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: clamp(10px, 2vw, 16px);
-    }
-    .photo{ position:relative; border-radius: 14px; overflow:hidden; aspect-ratio: 4/3;
-      box-shadow: 0 12px 26px var(--shadow); transform: translateZ(0); background:#fff; }
-    .photo img{
-      width:100%; height:100%; object-fit: cover; display:block;
-      transition: transform 400ms ease, filter 400ms ease;
-      filter: saturate(1.05) contrast(1.02);
-      background:#eee;
-    }
-    .photo::after{ content:"❤"; position:absolute; right:10px; bottom:8px; font-size: 18px; line-height:1; opacity:.9; text-shadow: 0 2px 8px rgba(0,0,0,.25); color: #fff; }
-    .photo:hover img{ transform: scale(1.03); filter: saturate(1.15) contrast(1.06); }
-
-    footer{ padding: 20px 16px; text-align:center; }
-
-    @keyframes fadeInBody { from {opacity:0} to {opacity:1} }
-    @keyframes dropInHeader { 0%{opacity:0; transform:translateY(-8px)} 100%{opacity:1; transform:translateY(0)} }
-    @keyframes riseIn { 0%{opacity:0; transform:translateY(14px) scale(.995)} 100%{opacity:1; transform:translateY(0) scale(1)} }
-
-    @media(prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
-    @media (max-width: 680px){ .gallery{ grid-template-columns: 1fr; } }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Test działa</title>
+  <style>body{font-family:system-ui,Arial;margin:0;display:grid;place-items:center;height:100vh}h1{font-size:42px}</style>
 </head>
 <body>
-
-  <div class="hearts" aria-hidden="true">
-    <div class="heart h1"></div><div class="heart h2"></div><div class="heart h3"></div>
-    <div class="heart h4"></div><div class="heart h5"></div>
-  </div>
-
-  <header>
-    <div class="title">Przepraszam… i Kocham Cię</div>
-    <div class="subtitle">Chcę to powiedzieć najpiękniej, jak potrafię.</div>
-  </header>
-
-  <main>
-    <section class="card">
-      <div class="apology">
-        <p>
-          Natalio, nie potrafię bez Ciebie żyć, ciągle myślę o nas, bo Cię kocham i chcę z Tobą spędzić resztę mojego życia.
-          <span class="accent">Kocham Cię</span>
-        </p>
-        <div class="signature">– Twój Szymuś</div>
-      </div>
-
-      <div class="gallery">
-        <figure class="photo">
-          /97442e25-0e13d4a.jpg
-        </figure>
-        <figure class="photo">
-          /bad53546-3012-4f5a-94a9-be483eeebc1b.jpg
-        </figure>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p style="opacity:0.6;">Dla Ciebie, Słońce ♥</p>
-  </footer>
-
+  <h1>✅ Działa</h1>
+  <p>Jeśli widzisz to na produkcji, routing jest OK. Potem podmienimy na Twoją stronę.</p>
 </body>
 </html>
