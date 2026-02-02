@@ -207,29 +207,22 @@
 <script>
 (function () {
   const APP_LINK = "fb-messenger://user-thread/100027275649683"; // aplikacja
-  const WEB_LINK = "https://m.me/Szymi001";                     // web fallback
+  const WEB_LINK = "https://m.me/Szymi001";                     // wersja web
 
   const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   document.getElementById("contactMe").addEventListener("click", function () {
 
     if (isMobile) {
-      const start = Date.now();
+      // TELEFON → otwórz aplikację Messenger
       window.location.href = APP_LINK;
-
-      setTimeout(() => {
-        if (Date.now() - start < 2000) {
-          window.location.href = WEB_LINK;
-        }
-      }, 800);
-
     } else {
+      // KOMPUTER → otwórz stronę w nowej karcie
       window.open(WEB_LINK, "_blank", "noopener");
     }
 
   });
 })();
 </script>
-
 </body>
 </html>
